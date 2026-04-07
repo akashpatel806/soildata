@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoilSense | Monitoring Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>SoilSense <span style="font-weight: 100;">PRO</span></h1>
+    <p>Real-time Agricultural Monitoring System</p>
+  </header>
+
+  <div class="dashboard-grid">
+    <div class="card" id="temp-card">
+      <p class="label">Temperature</p>
+      <div class="value">--</div>
+      <p class="unit">°C</p>
+    </div>
+
+    <div class="card" id="humidity-card">
+      <p class="label">Humidity</p>
+      <div class="value">--</div>
+      <p class="unit">%</p>
+    </div>
+
+    <div class="card" id="soil-card">
+      <p class="label">Soil Moisture</p>
+      <div class="value">--</div>
+      <p class="unit">%</p>
+    </div>
+
+    <div class="card" id="ph-card">
+      <p class="label">pH Level</p>
+      <div class="value">--</div>
+      <p class="unit">pH</p>
+    </div>
+  </div>
+
+  <section class="history-section">
+    <h2>Recent History</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Temp (°C)</th>
+          <th>Hum (%)</th>
+          <th>Soil (%)</th>
+          <th>pH</th>
+        </tr>
+      </thead>
+      <tbody id="history-body">
+        <!-- Rows will be populated dynamically -->
+      </tbody>
+    </table>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
