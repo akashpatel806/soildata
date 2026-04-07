@@ -33,9 +33,9 @@ process.on('SIGINT', async () => {
 // Routes
 app.use('/api', apiRoutes);
 
-// Health check
+// Root redirect to dashboard ✓
 app.get('/', (req, res) => {
-  res.json({ message: 'Soil Sensor Server running! Visit /dashboard.html' });
+  res.redirect('/dashboard.html');
 });
 
 app.listen(PORT, () => {

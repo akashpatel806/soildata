@@ -1,29 +1,11 @@
-# Soil Sensor Project TODO - All files created ✅
+# Soil Data Render UI Fix - TODO
 
-## Status:
-- [x] 1. Create package.json
-- [x] 2. npm install dependencies  
-- [x] 3. Create .env.example
-- [x] 4. Create server.js (Express app, DB connect)
-- [x] 5. Create models/SensorData.js (Mongoose schema)
-- [x] 6. Create routes/api.js (POST /api/sensors, GET /api/sensors/latest)
-- [x] 7. Create public/dashboard.html
-- [x] 8. Create public/dashboard.css
+## Approved Plan Steps:
+- [ ] Step 1: Edit server.js - Replace root '/' handler with redirect to '/dashboard.html'
+- [ ] Step 2: Create public/index.html - Add redirect meta tag to dashboard.html  
+- [ ] Step 3: Test locally with `npm start`
+- [ ] Step 4: Deploy to Render (git push)
+- [ ] Step 5: Verify https://soildata.onrender.com shows dashboard
 
-## Next Steps (Setup & Test):
-1. Copy `.env.example` → `.env`
-2. Set `MONGO_URI` in `.env` (use MongoDB Atlas free tier):
-   ```
-   PORT=3000
-   MONGO_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/soildata?retryWrites=true&w=majority
-   ```
-3. Get free Atlas URI: mongodb.com/atlas → New Cluster → Connect → Drivers
-4. `Ctrl+C` stop current server, then `npm run dev`
-5. Test API: 
-   ```
-   curl -X POST http://localhost:3000/api/sensors -H "Content-Type: application/json" -d "{\"soilMoisture\":45,\"temperature\":25.5,\"humidity\":60,\"deviceId\":\"esp32-01\"}"
-   ```
-6. View dashboard: http://localhost:3000/dashboard.html (auto-refreshes)
-7. ESP32 code sends POST to `http://localhost:3000/api/sensors`
+**Progress: Starting edits...**
 
-**Project complete! Server ready for ESP32 data. Dashboard shows live soil moisture gauge, temp, humidity.**
