@@ -43,5 +43,16 @@ router.get('/sensors/latest', async (req, res) => {
   }
 });
 
+// POST /api/data - General data endpoint
+router.post('/data', (req, res) => {
+    console.log("Received Data:", req.body);
+
+    res.json({
+        status: "success",
+        message: "Data received",
+        data: req.body
+    });
+});
+
 module.exports = router;
 
