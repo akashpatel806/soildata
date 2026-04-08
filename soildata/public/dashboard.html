@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soil Sensor Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🌱 Soil Sensor Dashboard</h1>
+      <p>Real-time data from ESP32</p>
+    </header>
+
+    <div class="status" id="status">Loading...</div>
+
+    <div class="cards">
+      <div class="card moisture">
+        <h2>Soil Moisture</h2>
+        <div class="value large" id="moistureValue">-- %</div>
+      </div>
+
+      <div class="card temp">
+        <h2>Temperature</h2>
+        <div class="value large" id="tempValue">-- °C</div>
+      </div>
+
+      <div class="card humidity">
+        <h2>Humidity</h2>
+        <div class="value large" id="humidityValue">-- %</div>
+      </div>
+    </div>
+
+    <div class="last-update" id="lastUpdate"></div>
+  </div>
+
+  <script>
+    async function fetchData() {
+      try {
+        const response = await fetch('/api/sensors/latest');
+        const result = await response.json();
+        
+        if (result.success && result.data) {
+          const data = result.data;
+          document.getElementById('status').textContent = '✅ Connected';
+          
+          // Soil Moisture
+          document.getElementById('moistureValue').textContent = `${data.soilMoisture} %`;
+          
+          // Temperature
+          document.getElementById('tempValue').textContent = `${data.temperature.toFixed(1)} °C`;
+          
+          // Humidity
+          document.getElementById('humidityValue').textContent = `${data.humidity.toFixed(1)} %`;
+          
+          // Last update
+          document.getElementById('lastUpdate').textContent = `Last update: ${new Date(data.timestamp).toLocaleString()}`;
+        } else {
+          document.getElementById('status').textContent = 'No data yet';
+        }
+      } catch (error) {
+        document.getElementById('status').textContent = '❌ Connection error';
+        console.error('Fetch error:', error);
+      }
+    }
+
+    // Load data every 5 seconds
+    fetchData();
+    setInterval(fetchData, 5000);
+  </script>
+</body>
+</html>
+
